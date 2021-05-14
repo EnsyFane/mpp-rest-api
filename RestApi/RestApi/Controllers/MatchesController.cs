@@ -49,5 +49,23 @@ namespace RestApi.Controllers
 
             return CreatedAtRoute(nameof(GetMatchById), new { match.Id }, match);
         }
+
+        [HttpPut("matches/{id}")]
+        public ActionResult UpdateMatch(int id, UpdateMatchDto updateMatchDto)
+        {
+            var matchFromRepo = _matchRepo.GetById(id);
+
+            if (matchFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(updateMatchDto, matchFromRepo);
+
+            _matchRepo.Update(matchFromRepo);
+            _matchRepo.SaveChages();
+
+            return NoContent();
+        }
     }
 }

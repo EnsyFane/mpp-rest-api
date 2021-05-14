@@ -41,7 +41,6 @@ namespace RestApi.Persistence
 
         public void Update(Match entity)
         {
-            throw new NotImplementedException();
         }
     }
 }
