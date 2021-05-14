@@ -2,7 +2,7 @@
 
 namespace RestApi.Models.Dtos
 {
-    public class CreateMatchDto
+    public class UpdateMatchDto
     {
         [Required]
         public string HomeTeam { get; set; }
