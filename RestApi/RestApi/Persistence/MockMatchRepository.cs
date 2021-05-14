@@ -11,6 +11,11 @@ namespace RestApi.Persistence
             throw new NotImplementedException();
         }
 
+        public void Delete(Match entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Match> GetAll()
         {
             return new List<Match>

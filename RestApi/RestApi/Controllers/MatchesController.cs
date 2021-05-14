@@ -93,5 +93,21 @@ namespace RestApi.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("matches/{id}")]
+        public ActionResult DeleteMatch(int id)
+        {
+            var matchFromRepo = _matchRepo.GetById(id);
+
+            if (matchFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _matchRepo.Delete(matchFromRepo);
+            _matchRepo.SaveChages();
+
+            return NoContent();
+        }
     }
 }

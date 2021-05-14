@@ -12,6 +12,8 @@ namespace RestApi.Persistence
 
         void Update(T entity);
 
+        void Delete(T entity);
+
         bool SaveChages();
     }
 }
