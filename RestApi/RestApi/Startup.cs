@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RestApi.Infrastructure.Mapper;
 using RestApi.Persistence;
+using System.Text.Json.Serialization;
 
 namespace RestApi
 {
@@ -31,13 +32,17 @@ namespace RestApi
                 }
                 else
                 {
-                    path += dbPath;
+                    path += "\\" + dbPath;
                 }
                 var connectionString = $"Data Source={path};";
                 opt.UseSqlite(connectionString);
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(opts =>
+                {
+                    opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                });
 
             services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
 
