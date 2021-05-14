@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RestApi.Infrastructure.Mapper;
+using RestApi.Persistence;
 
 namespace RestApi
 {
@@ -18,7 +21,27 @@ namespace RestApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<RestApiDBContext>(opt =>
+            {
+                string path = System.IO.Directory.GetCurrentDirectory();
+                string dbPath = Configuration.GetValue<string>("DbPath");
+                if (dbPath.Contains(":"))
+                {
+                    path = dbPath;
+                }
+                else
+                {
+                    path += dbPath;
+                }
+                var connectionString = $"Data Source={path};";
+                opt.UseSqlite(connectionString);
+            });
+
             services.AddControllers();
+
+            services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
+
+            services.AddScoped<IMatchRepository, SqlMatchRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
