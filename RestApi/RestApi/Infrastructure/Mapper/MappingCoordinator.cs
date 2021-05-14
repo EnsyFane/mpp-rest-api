@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using RestApi.Models;
+using RestApi.Models.Dtos;
 using System.Collections.Generic;
 
 namespace RestApi.Infrastructure.Mapper
@@ -18,6 +20,8 @@ namespace RestApi.Infrastructure.Mapper
         {
             return new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<CreateMatchDto, Match>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore());
             });
         }
 
