@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using RestApi.Infrastructure.Mapper;
 using RestApi.Models;
 using RestApi.Models.Dtos;
@@ -61,6 +62,31 @@ namespace RestApi.Controllers
             }
 
             _mapper.Map(updateMatchDto, matchFromRepo);
+
+            _matchRepo.Update(matchFromRepo);
+            _matchRepo.SaveChages();
+
+            return NoContent();
+        }
+
+        [HttpPatch("matches/{id}")]
+        public ActionResult PatchMatch(int id, JsonPatchDocument<UpdateMatchDto> patchDocument)
+        {
+            var matchFromRepo = _matchRepo.GetById(id);
+
+            if (matchFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            var matchToPatch = _mapper.Map<Match, UpdateMatchDto>(matchFromRepo);
+            patchDocument.ApplyTo(matchToPatch, ModelState);
+            if (!TryValidateModel(matchToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(matchToPatch, matchFromRepo);
 
             _matchRepo.Update(matchFromRepo);
             _matchRepo.SaveChages();

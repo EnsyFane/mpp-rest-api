@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using RestApi.Infrastructure.Mapper;
 using RestApi.Persistence;
 using System.Text.Json.Serialization;
@@ -39,9 +41,10 @@ namespace RestApi
             });
 
             services.AddControllers()
-                .AddJsonOptions(opts =>
+                .AddNewtonsoftJson(opts =>
                 {
-                    opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                    opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    opts.SerializerSettings.Converters.Add(new StringEnumConverter());
                 });
 
             services.AddSingleton<IMappingCoordinator, MappingCoordinator>();

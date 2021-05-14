@@ -24,6 +24,7 @@ namespace RestApi.Infrastructure.Mapper
                     .ForMember(dest => dest.Id, opt => opt.Ignore());
                 cfg.CreateMap<UpdateMatchDto, Match>()
                     .ForMember(dest => dest.Id, opt => opt.Ignore());
+                cfg.CreateMap<Match, UpdateMatchDto>();
             });
         }
 
