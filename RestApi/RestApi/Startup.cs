@@ -8,7 +8,6 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using RestApi.Infrastructure.Mapper;
 using RestApi.Persistence;
-using System.Text.Json.Serialization;
 
 namespace RestApi
 {
@@ -21,7 +20,6 @@ namespace RestApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RestApiDBContext>(opt =>
@@ -52,7 +50,6 @@ namespace RestApi
             services.AddScoped<IMatchRepository, SqlMatchRepository>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
