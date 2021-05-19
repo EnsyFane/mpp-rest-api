@@ -41,11 +41,11 @@ jobs:
         run: |
           msbuild.exe RestApi\RestApi\RestApi.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
       
-      # - name: Run Unit Tests      
-      #   run: dotnet test RestApi\Tests\RestApi.Unit.Tests\RestApi.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
+      - name: Run Unit Tests      
+        run: dotnet test RestApi\Tests\RestApi.Unit.Tests\RestApi.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
 
       - name: Run Integraion Tests      
         run: |
           dotnet run &
-          dotnet test RestApi\Tests\RestApi.Unit.Tests\RestApi.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
+          dotnet test RestApi\Tests\RestApi.Integration.Tests\RestApi.Integration.Tests.csproj --verbosity normal --no-build --configuration Release
       
