@@ -37,9 +37,9 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore RestApi\RestApi\RestApi.sln
         
-      # - name: Build Solution
-      #   run: |
-      #     msbuild.exe RestApi\RestApi\RestApi.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+      - name: Build Solution
+        run: |
+          msbuild.exe RestApi\RestApi\RestApi.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
       
       # - name: Run Unit Tests      
       #   run: dotnet test RestApi\Tests\RestApi.Unit.Tests\RestApi.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
