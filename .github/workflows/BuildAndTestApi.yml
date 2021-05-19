@@ -1,0 +1,51 @@
+name: .NET Core Build and Test MPP-Basketball HTTP REST API
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+    - 'RestApi/**'
+    - '.github/workflows/BuildAndTestApi.yml'
+  pull_request:
+    branches: [ main ]
+    paths: 
+    - 'RestApi/**'
+    - '.github/workflows/BuildAndTestApi.yml'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+
+      - name: Create Build Directory
+        run: mkdir _build
+
+      - name: Restore NuGet Packages
+        run: nuget restore RestApi\RestApi\RestApi.sln
+        
+      - name: Build Solution
+        run: |
+          msbuild.exe RestApi\RestApi\RestApi.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+      
+      - name: Run Unit Tests      
+        run: dotnet test RestApi\Tests\RestApi.Unit.Tests\RestApi.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
+
+      - name: Run Integraion Tests      
+        run: |
+          dotnet run &
+          dotnet test RestApi\Tests\RestApi.Integration.Tests\RestApi.Integration.Tests.csproj --verbosity normal --no-build --configuration Release
+      
