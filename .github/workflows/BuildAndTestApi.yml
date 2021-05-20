@@ -44,8 +44,7 @@ jobs:
       - name: Run Unit Tests      
         run: dotnet test RestApi\Tests\RestApi.Unit.Tests\RestApi.Unit.Tests.csproj --verbosity normal --no-build --configuration Release
 
-      - name: Run Integraion Tests      
+      - name: Run Integration Tests      
         run: |
-          dotnet run &
           dotnet test RestApi\Tests\RestApi.Integration.Tests\RestApi.Integration.Tests.csproj --verbosity normal --no-build --configuration Release
       
