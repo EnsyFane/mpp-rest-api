@@ -22,6 +22,22 @@ namespace RestApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureDbContext(services);
+
+            services.AddControllers()
+                .AddNewtonsoftJson(opts =>
+                {
+                    opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    opts.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
+
+            services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
+
+            services.AddScoped<IMatchRepository, SqlMatchRepository>();
+        }
+
+        public void ConfigureDbContext(IServiceCollection services)
+        {
             services.AddDbContext<RestApiDBContext>(opt =>
             {
                 string path = System.IO.Directory.GetCurrentDirectory();
@@ -37,17 +53,6 @@ namespace RestApi
                 var connectionString = $"Data Source={path};";
                 opt.UseSqlite(connectionString);
             });
-
-            services.AddControllers()
-                .AddNewtonsoftJson(opts =>
-                {
-                    opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    opts.SerializerSettings.Converters.Add(new StringEnumConverter());
-                });
-
-            services.AddSingleton<IMappingCoordinator, MappingCoordinator>();
-
-            services.AddScoped<IMatchRepository, SqlMatchRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

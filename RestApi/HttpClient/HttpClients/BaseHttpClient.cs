@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BasketballClient.HttpClients
 {
-    public class BaseHttpClient
+    public abstract class BaseHttpClient
     {
         private static readonly JsonSerializerOptions _serializerSettings = new JsonSerializerOptions()
         {
