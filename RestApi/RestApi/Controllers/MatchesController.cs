@@ -5,6 +5,7 @@ using RestApi.Models;
 using RestApi.Models.Dtos;
 using RestApi.Persistence;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RestApi.Controllers
 {
@@ -39,6 +40,21 @@ namespace RestApi.Controllers
             var matches = _matchRepo.GetAll();
 
             return Ok(matches);
+        }
+
+        [HttpPost("matches/filtered")]
+        public ActionResult<IEnumerable<Match>> GetFilteredMatcehs(FilterMatchDto filter)
+        {
+            var matches = _matchRepo.GetAll();
+
+            return Ok(matches
+                .Where(m => m.Id == (filter.Id ?? m.Id))
+                .Where(m => m.HomeTeam.ToLower().Contains((filter.HomeTeam ?? "").ToLower()))
+                .Where(m => m.GuestTeam.ToLower().Contains((filter.GuestTeam ?? "").ToLower()))
+                .Where(m => m.MatchType == (filter.MatchType ?? m.MatchType))
+                .Where(m => m.TicketPrice == (filter.TicketPrice ?? m.TicketPrice))
+                .Where(m => m.AvailableSeats == (filter.AvailableSeats ?? m.AvailableSeats))
+                .ToList());
         }
 
         [HttpPost("matches")]

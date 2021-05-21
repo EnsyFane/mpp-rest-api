@@ -15,7 +15,7 @@ namespace RestApi.Models
         public string GuestTeam { get; set; }
 
         [Required]
-        public MatchType MatchType { get; set; }
+        public MatchType? MatchType { get; set; }
 
         [Required]
         public int? AvailableSeats { get; set; }
