@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using RestApi.Persistence;
 using System.Linq;
@@ -9,11 +10,12 @@ namespace RestApi.Integration.Tests.Infrastructure
 {
     public class BaseIntegrationTest
     {
-        protected readonly HttpClient _client;
+        protected HttpClient _client;
+        protected readonly WebApplicationFactory<Startup> _factory;
 
         public BaseIntegrationTest()
         {
-            var factory = new CustomWebApplicationFactory()
+            _factory = new CustomWebApplicationFactory()
                 .WithWebHostBuilder(builder =>
                 {
                     builder.ConfigureServices(services =>
@@ -26,7 +28,7 @@ namespace RestApi.Integration.Tests.Infrastructure
                         });
                     });
                 });
-            _client = factory.CreateClient();
+            _client = _factory.CreateClient();
             var requestHeaders = _client.DefaultRequestHeaders;
 
             if (requestHeaders.Accept == null || !requestHeaders.Accept.Any(m => m.MediaType == "application/json"))
