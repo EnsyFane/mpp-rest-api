@@ -1,6 +1,8 @@
+@use '../../../variables';
+
 .container {
     width: 100%;
-    background-color: #009DDC;
+    background-color: variables.$primary-color;
     text-align: center;
     padding: 20px 0;
 }
@@ -10,5 +12,5 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 2em;
-    color: #2A2D34;
+    color: variables.$text-color;
 }
