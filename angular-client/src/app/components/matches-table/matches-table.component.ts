@@ -13,9 +13,12 @@ export class MatchesTableComponent implements OnInit {
 		{ name: 'sdaasda' }
 	];
 
-	constructor() { }
+	constructor() {
+		// TODO
+	 }
 
 	ngOnInit(): void {
+		// TODO
 	}
 
 }
