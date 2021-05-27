@@ -16,6 +16,7 @@ import { ErrorInfoComponent } from './components/error-info/error-info.component
 import { SnackbarService } from './services/snackbar-service/snackbar.service';
 import { RestApiMatchesComponent } from './components/rest-api-matches/rest-api-matches.component';
 import { SidenavWrapperComponent } from './components/sidenav/sidenav-wrapper/sidenav-wrapper.component';
+import { DeleteMatchDialogComponent } from './components/delete-match-dialog/delete-match-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -25,7 +26,8 @@ import { SidenavWrapperComponent } from './components/sidenav/sidenav-wrapper/si
 		ToolbarComponent,
 		ErrorInfoComponent,
 		RestApiMatchesComponent,
-		SidenavWrapperComponent
+		SidenavWrapperComponent,
+  DeleteMatchDialogComponent
 	],
 	imports: [
 		AppRoutingModule,

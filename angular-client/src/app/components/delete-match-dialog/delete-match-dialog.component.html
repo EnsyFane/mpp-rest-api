@@ -1,0 +1,8 @@
+<h2 matDialogTitle>Delete Match</h2>
+<div matDialogContent>
+    <p>Are you sure you want to delete the selected match?</p>
+</div>
+<div matDialogActions [align]="'center'">
+    <button mat-button (click)="onCancel()">No</button>
+    <button mat-stroked-button [mat-dialog-close]="true">Delete</button>
+</div>
