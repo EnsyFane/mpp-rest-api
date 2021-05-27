@@ -1,0 +1,80 @@
+// Color scheme at: https://coolors.co/2a2d34-009ddc-eaebec-f26430-f14141
+// Color shades generator: https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+// Color contrast finder: https://contrast-finder.tanaguru.com/
+
+$foreground-color: #2A2D34;
+$backgroud-color: #EAEBEC;
+
+$blue-p: (
+    50: #e1f5fc,
+    100: #b3e6f8,
+    200: #82d5f3,
+    300: #53c5ef,
+    400: #2fb8ed,
+    500: #08acea,
+    600: #009edc,
+    700: #008bc9,
+    800: #007ab5,
+    900: #005a94,
+    contrast: (
+        50: rgba(black, 87),
+        100: rgba(black, 87),
+        200: rgba(black, 87),
+        300: rgba(black, 87),
+        400: rgba(black, 87),
+        500: rgba(black, 87),
+        600: rgba(black, 87),
+        700: rgba(black, 87),
+        800: rgba(black, 87),
+        900: rgba(black, 87),
+    ),
+);
+
+$orange-p: (
+    50: #f8eae8,
+    100: #facebf,
+    200: #f7ae96,
+    300: #f4906d,
+    400: #f3794d,
+    500: #f26430,
+    600: #e75e2c,
+    700: #d95728,
+    800: #cb5025,
+    900: #b1451f,
+    contrast: (
+        50: rgba(black, 87),
+        100: rgba(black, 87),
+        200: rgba(black, 87),
+        300: rgba(black, 87),
+        400: rgba(black, 87),
+        500: rgba(black, 87),
+        600: rgba(black, 87),
+        700: rgba(black, 87),
+        800: rgba(black, 87),
+        900: rgba(black, 87),
+    ),
+);
+
+$red-p: (
+    50: #ffe9ec,
+    100: #ffc9ce,
+    200: #f29392,
+    300: #e86767,
+    400: #f14141,
+    500: #f52922,
+    600: #e61923,
+    700: #d5041d,
+    800: #c80015,
+    900: #b80007,
+    contrast: (50: rgba(black, 87),
+        100: rgba(black, 87),
+        200: rgba(black, 87),
+        300: rgba(black, 87),
+        400: rgba(black, 87),
+        500: rgba(black, 87),
+        600: rgba(black, 87),
+        700: rgba(black, 87),
+        800: rgba(black, 87),
+        900: rgba(black, 87),
+    ),
+);

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { A11yModule } from '@angular/cdk/a11y';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 // import { MatBadgeModule } from '@angular/material/badge';
 // import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,8 +12,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // import { MatChipsModule } from '@angular/material/chips';
 // import { MatStepperModule } from '@angular/material/stepper';
 // import { MatDatepickerModule } from '@angular/material/datepicker';
-// import { MatDialogModule } from '@angular/material/dialog';
-// import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 // import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,7 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { MatRadioModule } from '@angular/material/radio';
 // import { MatSelectModule } from '@angular/material/select';
-// import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSliderModule } from '@angular/material/slider';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -43,7 +43,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         A11yModule,
         BrowserModule,
         BrowserAnimationsModule,
-        // MatAutocompleteModule,
+        MatAutocompleteModule,
         // MatBadgeModule,
         // MatBottomSheetModule,
         MatButtonModule,
@@ -53,8 +53,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         // MatChipsModule,
         // MatStepperModule,
         // MatDatepickerModule,
-        // MatDialogModule,
-        // MatDividerModule,
+        MatDialogModule,
+        MatDividerModule,
         MatExpansionModule,
         // MatGridListModule,
         MatIconModule,
@@ -68,7 +68,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         // MatRadioModule,
         // MatRippleModule,
         // MatSelectModule,
-        // MatSidenavModule,
+        MatSidenavModule,
         // MatSliderModule,
         // MatSlideToggleModule,
         MatSnackBarModule,

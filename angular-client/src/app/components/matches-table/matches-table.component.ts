@@ -1,17 +1,17 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { interval, Subscription } from 'rxjs';
 import { startWith, switchMap, tap } from 'rxjs/operators';
-import { Match, MatchType } from 'src/app/models/match-model';
+import { AppEvent, EventName } from 'src/app/models/event';
+import { Match } from 'src/app/models/match-model';
 import { EventService } from 'src/app/services/event-service/event.service';
 import { MatchService } from 'src/app/services/match-service/match.service';
 
 @Component({
 	selector: 'matches-table',
 	templateUrl: './matches-table.component.html',
-	styleUrls: ['./matches-table.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	styleUrls: ['./matches-table.component.scss']
 })
 export class MatchesTableComponent implements OnInit, OnDestroy {
 	displayedColumns: string[] = ['select', 'homeTeam', 'guestTeam', 'matchType', 'availableSeats', 'ticketPrice'];
@@ -25,7 +25,29 @@ export class MatchesTableComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private eventService: EventService,
-		private matchService: MatchService) { }
+		private matchService: MatchService) {
+		this.subscriptions.set('add-match', eventService.on(EventName.AddMatch).subscribe((matchDetails: Match) => {
+			this.subscriptions.set('match-added', matchService.addMatch(matchDetails).subscribe(() => {
+				this.refreshPolling();
+			}));
+			eventService.emit(new AppEvent(EventName.CloseSidenav));
+		}));
+
+		this.subscriptions.set('edit-match', eventService.on(EventName.EditMatch).subscribe((matchDetails: Match) => {
+			this.subscriptions.set('match-edited', matchService.updateMatch(matchDetails.id, matchDetails).subscribe(() => {
+				this.refreshPolling();
+			}));
+			eventService.emit(new AppEvent(EventName.CloseSidenav));
+		}));
+
+		this.subscriptions.set('delete-match', eventService.on(EventName.DeleteMatch).subscribe((matchId: number) => {
+			this.subscriptions.set('match-deleted', matchService.deleteMatch(matchId).subscribe(() => {
+				this.refreshPolling();
+				this.selection.toggle(matchId);
+			}));
+			eventService.emit(new AppEvent(EventName.CloseSidenav));
+		}));
+	}
 
 	ngOnInit(): void {
 		const initSubscription = this.matchService.getMatches()
@@ -57,10 +79,18 @@ export class MatchesTableComponent implements OnInit, OnDestroy {
 	masterToggle() {
 		if (this.isAllSelected()) {
 			this.selection.clear();
-			return
+			this.eventService.changeSelectedElements(this.selection.selected);
+			return;
 		}
 
 		this.selection.select(...this.dataSource.data.map(m => m.id))
+		this.eventService.changeSelectedElements(this.selection.selected);
+
+	}
+
+	toggleSelection(id: number) {
+		this.selection.toggle(id);
+		this.eventService.changeSelectedElements(this.selection.selected);
 	}
 
 	private cleanSubscription(name: string): void {
