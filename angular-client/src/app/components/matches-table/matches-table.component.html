@@ -1,7 +1,46 @@
 <table mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef="name">Name</th>
-        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="null">
+            </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row.id) : null"
+                [checked]="selection.isSelected(row.id)">
+            </mat-checkbox>
+        </td>
+    </ng-container>
+
+    <!-- Home Team Column -->
+    <ng-container matColumnDef="homeTeam">
+        <th mat-header-cell *matHeaderCellDef>Home Team</th>
+        <td mat-cell *matCellDef="let element">{{element.homeTeam}}</td>
+    </ng-container>
+
+    <!-- Guest Team Column -->
+    <ng-container matColumnDef="guestTeam">
+        <th mat-header-cell *matHeaderCellDef>Guest Team</th>
+        <td mat-cell *matCellDef="let element">{{element.guestTeam}}</td>
+    </ng-container>
+
+    <!-- Match Type Column -->
+    <ng-container matColumnDef="matchType">
+        <th mat-header-cell *matHeaderCellDef>Match Type</th>
+        <td mat-cell *matCellDef="let element">{{element.matchType}}</td>
+    </ng-container>
+
+    <!-- Available Seats Column -->
+    <ng-container matColumnDef="availableSeats">
+        <th mat-header-cell *matHeaderCellDef>Available Seats</th>
+        <td mat-cell *matCellDef="let element">{{element.availableSeats}}</td>
+    </ng-container>
+
+    <!-- Ticket Price Column -->
+    <ng-container matColumnDef="ticketPrice">
+        <th mat-header-cell *matHeaderCellDef>Ticket Price</th>
+        <td mat-cell *matCellDef="let element">{{element.ticketPrice}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

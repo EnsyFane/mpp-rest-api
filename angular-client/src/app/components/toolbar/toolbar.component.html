@@ -1,14 +1,14 @@
 <div class="container">
     <mat-toolbar>
-        <button mat-button>
+        <button mat-raised-button color="accent">
             <mat-icon>add</mat-icon>
             <span>Add</span>
         </button>
-        <button mat-button>
+        <button *ngIf="isElementSelected" mat-raised-button color="accent">
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
         </button>
-        <button mat-button>
+        <button *ngIf="isElementSelected" mat-raised-button color="accent">
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
         </button>

@@ -1,16 +1,9 @@
-@use '../../../variables';
+@import '../../../theme.scss';
 
-.container {
-    width: 100%;
-    background-color: variables.$primary-color;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.content-text {
+span {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
-    font-size: 2em;
-    color: variables.$text-color;
+    font-size: x-large;
+    color: $foreground-color;
 }

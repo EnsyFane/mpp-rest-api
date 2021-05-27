@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'matches-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+	selector: 'matches-toolbar',
+	templateUrl: './toolbar.component.html',
+	styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+	isElementSelected: boolean = false;
 
-  ngOnInit(): void {
-  }
+	constructor() { }
+
+	ngOnInit(): void {
+	}
 
 }
