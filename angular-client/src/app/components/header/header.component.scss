@@ -1,3 +1,4 @@
+@use '~@angular/material'as mat;
 @import '../../../theme.scss';
 
 span {
@@ -6,4 +7,18 @@ span {
     margin-right: auto;
     font-size: x-large;
     color: $foreground-color;
+}
+
+mat-slide-toggle {
+    transform: rotateY(180deg);
+}
+
+.light-mode {
+    color: mat.get-color-from-palette($theme-accent, 500);
+    margin-right: 5px;
+}
+
+.night-mode {
+    transform: rotateZ(160deg);
+    margin-right: 5px;
 }

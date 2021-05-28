@@ -28,12 +28,13 @@ import { MatInputModule } from '@angular/material/input';
 // import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSliderModule } from '@angular/material/slider';
-// import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 // import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 // import { MatTooltipModule } from '@angular/material/tooltip';
 // import { MatTreeModule } from '@angular/material/tree';
 // import { OverlayModule } from '@angular/cdk/overlay';
@@ -43,6 +44,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         A11yModule,
         BrowserModule,
         BrowserAnimationsModule,
+        FormsModule,
         MatAutocompleteModule,
         // MatBadgeModule,
         // MatBottomSheetModule,
@@ -70,7 +72,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         // MatSelectModule,
         MatSidenavModule,
         // MatSliderModule,
-        // MatSlideToggleModule,
+        MatSlideToggleModule,
         MatSnackBarModule,
         // MatSortModule,
         MatTableModule,

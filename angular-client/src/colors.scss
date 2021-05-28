@@ -31,16 +31,16 @@ $blue-p: (
 );
 
 $orange-p: (
-    50: #f8eae8,
-    100: #facebf,
-    200: #f7ae96,
-    300: #f4906d,
-    400: #f3794d,
-    500: #f26430, // asta
-    600: #e75e2c,
-    700: #d95728,
-    800: #cb5025,
-    900: #b1451f,
+    50: #fef4e4,
+    100: #fde1bb,
+    200: #fcce90,
+    300: #fcbb67,
+    400: #fbac4c,
+    500: #f99f3f,
+    600: #f4943b,
+    700: #ed8537,
+    800: #e57834,
+    900: #d86231,
     contrast: (
         50: rgba(black, 87),
         100: rgba(black, 87),
@@ -66,7 +66,8 @@ $red-p: (
     700: #d5041d,
     800: #c80015,
     900: #b80007,
-    contrast: (50: rgba(black, 87),
+    contrast: (
+        50: rgba(black, 87),
         100: rgba(black, 87),
         200: rgba(black, 87),
         300: rgba(black, 87),

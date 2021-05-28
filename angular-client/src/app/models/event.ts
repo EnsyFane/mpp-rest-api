@@ -4,7 +4,8 @@ export enum EventName {
     AddMatch = 'ADD_MATCH',
     EditMatch = 'EDIT_MATCH',
     DeleteMatch = 'DELETE_MATCH',
-    SidenavSecondaryAction = 'SIDENAV_SECONDARY_ACTION'
+    SidenavSecondaryAction = 'SIDENAV_SECONDARY_ACTION',
+    ThemeChange = 'THEME_CHANGE'
 }
 
 export class AppEvent {

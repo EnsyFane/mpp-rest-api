@@ -7,7 +7,7 @@ $theme-primary: mat.define-palette($blue-p);
 $theme-accent: mat.define-palette($orange-p);
 $theme-warn: mat.define-palette($red-p);
 
-$app-theme: mat.define-light-theme(
+$app-light-theme: mat.define-light-theme(
     (
         color: (
             primary: $theme-primary,
@@ -17,4 +17,18 @@ $app-theme: mat.define-light-theme(
     )
 );
 
-@include mat.all-component-themes($app-theme);
+$app-dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: $theme-primary,
+            accent: $theme-accent,
+            warn: $theme-warn
+        )
+    )
+);
+
+@include mat.all-component-themes($app-light-theme);
+
+.dark-mode {
+    @include mat.all-component-themes($app-dark-theme);
+}

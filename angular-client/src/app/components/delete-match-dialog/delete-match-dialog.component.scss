@@ -1,0 +1,6 @@
+@use '~@angular/material'as mat;
+@import '../../../theme.scss';
+
+.header {
+    background-color: mat.get-color-from-palette($theme-primary, 500);
+}

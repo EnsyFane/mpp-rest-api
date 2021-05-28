@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { AppEvent, EventName } from 'src/app/models/event';
@@ -58,7 +58,8 @@ export class ToolbarComponent implements OnDestroy {
 	deleteButtonClicked(event): void {
 		event.currentTarget.blur();
 		const dialogRef = this.dialog.open(DeleteMatchDialogComponent, {
-			width: '450px'
+			width: '550px',
+			panelClass: 'default-dialog'
 		});
 		this.subscriptions.push(dialogRef.afterClosed().subscribe((result) => {
 			if (result) {
