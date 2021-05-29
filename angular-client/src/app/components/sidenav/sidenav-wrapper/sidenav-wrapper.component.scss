@@ -1,0 +1,38 @@
+.container {
+    height: 100vh;
+}
+
+.sidenav {
+    min-width: 200px;
+    max-width: 500px;
+}
+
+.container-top {
+    padding: 20px 50px;
+
+    .title {
+        text-align: center;
+    }
+}
+
+.match-form mat-form-field {
+    width: 100%;
+}
+
+.container-bot {
+    padding: 70px 50px;
+}
+
+.primary-button {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 100px;
+}
+
+.secondary-button {
+    position: absolute;
+    bottom: 50px;
+    right: 170px;
+    width: 100px;
+}

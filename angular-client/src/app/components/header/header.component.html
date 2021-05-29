@@ -1,0 +1,6 @@
+<mat-toolbar color="primary">
+    <span>Rest API Test app</span>
+    <mat-icon *ngIf="lightMode" class="light-mode">wb_sunny</mat-icon>
+    <mat-icon *ngIf="!lightMode" class="night-mode">brightness_2</mat-icon>
+    <mat-slide-toggle [(ngModel)]="lightMode" (ngModelChange)="themeSlideChanged()"></mat-slide-toggle>
+</mat-toolbar>
