@@ -1,6 +1,14 @@
-@use '~@angular/material'as mat;
-@import '../../../theme.scss';
+// @use '~@angular/material'as mat;
+// @import '../../../theme.scss';
 
-.header {
-    background-color: mat.get-color-from-palette($theme-primary, 500);
+// // .header {
+// //     background-color: mat.get-color-from-palette($theme-primary, 500);
+// // }
+
+.mat-dialog-actions {
+    justify-content: flex-end;
+
+    button {
+        min-width: 100px;
+    }
 }

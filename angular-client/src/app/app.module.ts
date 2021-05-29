@@ -8,7 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MatchesTableComponent } from './components/matches-table/matches-table.component';
 import { MaterialModule } from './material-module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventService } from './services/event-service/event.service';
 import { MatchService } from './services/match-service/match.service';
@@ -27,7 +27,7 @@ import { DeleteMatchDialogComponent } from './components/delete-match-dialog/del
 		ErrorInfoComponent,
 		RestApiMatchesComponent,
 		SidenavWrapperComponent,
-  DeleteMatchDialogComponent
+		DeleteMatchDialogComponent
 	],
 	imports: [
 		AppRoutingModule,

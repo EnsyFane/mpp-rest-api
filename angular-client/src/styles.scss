@@ -1,5 +1,5 @@
 @use '~@angular/material' as mat;
-@import 'theme.scss';
+@import "theme.scss";
 
 html {
     height: 100%;
@@ -15,12 +15,8 @@ body {
     padding: 0 !important;
 }
 
-.default-dialog .mat-dialog-container {
-    // padding: 1px;
-}
-
 * {
-    font-family: 'Roboto', 'sans-serif';
+    font-family: "Roboto", "sans-serif";
 }
 
 .mat-button {
@@ -30,7 +26,7 @@ body {
 }
 
 .mat-stroked-button:not([disabled]) {
-    border-color:rgba(mat.get-color-from-palette($theme-primary, 500), 0.5) !important;
+    border-color: rgba(mat.get-color-from-palette($theme-primary, 500), 0.5) !important;
 
     .mat-button-focus-overlay {
         background-color: transparent;

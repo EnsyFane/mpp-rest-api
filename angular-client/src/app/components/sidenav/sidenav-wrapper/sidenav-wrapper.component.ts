@@ -74,7 +74,7 @@ export class SidenavWrapperComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		this.filteredMatchTypes = this.matchFormGroup.get("matchType").valueChanges
+		this.filteredMatchTypes = this.matchFormGroup.get('matchType').valueChanges
 			.pipe(
 				startWith(''),
 				map(value => this.filterMatchTypeOptions(value))

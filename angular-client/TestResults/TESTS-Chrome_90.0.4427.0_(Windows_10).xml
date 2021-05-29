@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 90.0.4427.0 (Windows 10)" package="" timestamp="2021-05-28T08:06:02" id="0" hostname="Fane-Laptop" tests="12" errors="0" failures="2" time="0.435">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4427.0 Safari/537.36"/>
+  </properties>
+  <testcase name="ErrorInfoComponent should create" time="0.426" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent">
+    <failure type="">Error: Can't resolve all parameters for MatSnackBarRef: (?, ?).
+    at getUndecoratedInjectableFactory (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11456:1)
+    at injectableDefOrInjectorDefFactory (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11446:1)
+    at providerToFactory (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11511:1)
+    at providerToRecord (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11476:1)
+    at R3Injector.processProvider (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11379:1)
+    at node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11365:1
+    at node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:4127:1
+    at Array.forEach (&lt;anonymous&gt;)
+    at deepForEach (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:4127:1)
+    at R3Injector.processInjectorType (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11365:1)
+</failure>
+  </testcase>
+  <testcase name="ErrorInfoComponent Simple message with no details should have the correct main message" time="0.009" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent Simple message with no details">
+    <failure type="">Error: Can't resolve all parameters for MatSnackBarRef: (?, ?).
+    at getUndecoratedInjectableFactory (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11456:1)
+    at injectableDefOrInjectorDefFactory (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11446:1)
+    at providerToFactory (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11511:1)
+    at providerToRecord (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11476:1)
+    at R3Injector.processProvider (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11379:1)
+    at node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11365:1
+    at node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:4127:1
+    at Array.forEach (&lt;anonymous&gt;)
+    at deepForEach (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:4127:1)
+    at R3Injector.processInjectorType (node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js:11365:1)
+</failure>
+  </testcase>
+  <testcase name="MatchService should be created" time="0" classname="Chrome_90_0_4427_0_(Windows_10).MatchService">
+    <skipped/>
+  </testcase>
+  <testcase name="EventService should be created" time="0" classname="Chrome_90_0_4427_0_(Windows_10).EventService">
+    <skipped/>
+  </testcase>
+  <testcase name="ToolbarComponent should create" time="0" classname="Chrome_90_0_4427_0_(Windows_10).ToolbarComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="RestApiMatchesComponent should create" time="0" classname="Chrome_90_0_4427_0_(Windows_10).RestApiMatchesComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SnackbarService should be created" time="0" classname="Chrome_90_0_4427_0_(Windows_10).SnackbarService">
+    <skipped/>
+  </testcase>
+  <testcase name="HeaderComponent should create" time="0" classname="Chrome_90_0_4427_0_(Windows_10).HeaderComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="SidenavWrapperComponent should create" time="0" classname="Chrome_90_0_4427_0_(Windows_10).SidenavWrapperComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="MatchesTableComponent should create" time="0" classname="Chrome_90_0_4427_0_(Windows_10).MatchesTableComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should create the app" time="0" classname="Chrome_90_0_4427_0_(Windows_10).AppComponent">
+    <skipped/>
+  </testcase>
+  <testcase name="AppComponent should have as title 'angular-client'" time="0" classname="Chrome_90_0_4427_0_(Windows_10).AppComponent">
+    <skipped/>
+  </testcase>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

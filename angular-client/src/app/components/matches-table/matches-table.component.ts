@@ -76,7 +76,7 @@ export class MatchesTableComponent implements OnInit, OnDestroy {
 		return numSelected === numRows;
 	}
 
-	masterToggle() {
+	masterToggle(): void {
 		if (this.isAllSelected()) {
 			this.selection.clear();
 			this.eventService.changeSelectedElements(this.selection.selected);
@@ -88,7 +88,7 @@ export class MatchesTableComponent implements OnInit, OnDestroy {
 
 	}
 
-	toggleSelection(id: number) {
+	toggleSelection(id: number): void {
 		this.selection.toggle(id);
 		this.eventService.changeSelectedElements(this.selection.selected);
 	}

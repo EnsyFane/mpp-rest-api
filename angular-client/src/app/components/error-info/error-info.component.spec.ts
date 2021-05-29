@@ -1,25 +1,56 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule, MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
-import { ErrorInfoComponent } from './error-info.component';
+import { ErrorInfoComponent, SnackbarDetails } from './error-info.component';
 
-describe('ErrorInfoComponent', () => {
-  let component: ErrorInfoComponent;
-  let fixture: ComponentFixture<ErrorInfoComponent>;
+fdescribe('ErrorInfoComponent', () => {
+	let component: ErrorInfoComponent;
+	let fixture: ComponentFixture<ErrorInfoComponent>;
+	let mockSnackbarRef: jasmine.SpyObj<MatSnackBarRef<ErrorInfoComponent>>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ErrorInfoComponent ]
-    })
-    .compileComponents();
-  });
+	async function configureTests(snacbarDetails: SnackbarDetails): Promise<void> {
+		mockSnackbarRef = jasmine.createSpyObj(['dismiss']);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorInfoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+		const testBed = TestBed.configureTestingModule({
+			declarations: [ErrorInfoComponent],
+			providers: [
+				{ provide: MatSnackBarRef, usevValue: mockSnackbarRef },
+				{ provide: MAT_SNACK_BAR_DATA, useValue: snacbarDetails }
+			],
+			imports: [
+				CommonModule,
+				MatButtonModule,
+				MatExpansionModule,
+				MatIconModule,
+				MatSnackBarModule
+			]
+		});
+		await testBed.compileComponents();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+		fixture = TestBed.createComponent(ErrorInfoComponent);
+		fixture.detectChanges();
+		component = fixture.componentInstance;
+	}
+
+
+	it('should create', async () => {
+		await configureTests(new SnackbarDetails('main-text'));
+		expect(component).toBeTruthy();
+	});
+
+	describe('Simple message with no details', () => {
+		const message = new SnackbarDetails('main-text');
+
+		beforeEach(async () => {
+			await configureTests(message);
+		});
+
+		it('should have the correct main message', () => {
+
+		})
+	})
 });

@@ -1,4 +1,5 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { Component, HostBinding, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EventName } from './models/event';
 import { EventService } from './services/event-service/event.service';
@@ -13,10 +14,20 @@ export class AppComponent implements OnDestroy {
 	@HostBinding('class') className = '';
 
 	subscription: Subscription;
+	title = 'angular-client';
 
-	constructor(private eventService: EventService) {
+	readonly darkModeClass = 'dark-mode';
+
+	constructor(
+		private eventService: EventService,
+		private overlay: OverlayContainer) {
 		this.subscription = eventService.on(EventName.ThemeChange).subscribe((lightMode: boolean) => {
-			this.className = lightMode ? '' : 'dark-mode';
+			this.className = lightMode ? '' : this.darkModeClass;
+			if (lightMode) {
+				overlay.getContainerElement().classList.remove(this.darkModeClass);
+			} else {
+				overlay.getContainerElement().classList.add(this.darkModeClass);
+			}
 		});
 	}
 

@@ -26,6 +26,7 @@
         "no-unused-declaration": true,
         "no-empty": true,
         "no-async-without-await": true,
-        "no-focused-tests": true
+        "no-focused-tests": true,
+        "quotemark": [true, "single", "avoid-escape"]
     }
 }

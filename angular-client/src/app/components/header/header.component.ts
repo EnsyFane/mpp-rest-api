@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppEvent, EventName } from 'src/app/models/event';
 import { EventService } from 'src/app/services/event-service/event.service';
 
@@ -12,7 +12,7 @@ export class HeaderComponent {
 
 	constructor(private eventService: EventService) { }
 
-	themeSlideChanged() {
+	themeSlideChanged(): void {
 		this.eventService.emit(new AppEvent(EventName.ThemeChange, this.lightMode));
 	}
 }

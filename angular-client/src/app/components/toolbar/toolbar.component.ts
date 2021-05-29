@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { AppEvent, EventName } from 'src/app/models/event';
 import { Match } from 'src/app/models/match-model';
 import { EventService } from 'src/app/services/event-service/event.service';
-import { MatchService } from 'src/app/services/match-service/match.service';
 import { DeleteMatchDialogComponent } from '../delete-match-dialog/delete-match-dialog.component';
 import { SidenavDetails } from '../sidenav/sidenav-wrapper/sidenav-wrapper.component';
 
@@ -39,23 +38,23 @@ export class ToolbarComponent implements OnDestroy {
 		}
 	}
 
-	addButtonClicked(event): void {
+	addButtonClicked(event: any): void {
 		event.currentTarget.blur();
-		const sidenavDetails = new SidenavDetails("Add match", "Add", "Cancel", EventName.AddMatch);
+		const sidenavDetails = new SidenavDetails('Add match', 'Add', 'Cancel', EventName.AddMatch);
 		let appEvent = new AppEvent(EventName.OpenSidenav, sidenavDetails);
 		this.eventService.emit(appEvent);
 	}
 
-	editButtonClicked(event): void {
+	editButtonClicked(event: any): void {
 		event.currentTarget.blur();
 		const placeholderMatch = new Match();
 		placeholderMatch.id = this.selectedElementId;
-		const sidenavDetails = new SidenavDetails("Edit match", "Edit", "Cancel", EventName.EditMatch, placeholderMatch);
+		const sidenavDetails = new SidenavDetails('Edit match', 'Edit', 'Cancel', EventName.EditMatch, placeholderMatch);
 		let appEvent = new AppEvent(EventName.OpenSidenav, sidenavDetails);
 		this.eventService.emit(appEvent);
 	}
 
-	deleteButtonClicked(event): void {
+	deleteButtonClicked(event: any): void {
 		event.currentTarget.blur();
 		const dialogRef = this.dialog.open(DeleteMatchDialogComponent, {
 			width: '550px',
