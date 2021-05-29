@@ -1,0 +1,85 @@
+@use '~@angular/material' as mat;
+@import  '../../../theme.scss';
+
+:host {
+    background-color: $backgroud-color;
+    border-radius: 2px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+
+.header {
+    background-color: mat.get-color-from-palette($theme-warn, 500);
+    border-radius: 2px 2px 0 0;
+    color: $backgroud-color;
+    display: grid;
+    grid-template-areas: "icon . text . dismiss";
+    grid-template-columns: 16px 8px auto 1fr auto;
+    height: 30px;
+    padding: 0 14px;
+
+    * {
+        align-self: center;
+    }
+
+    .header-icon {
+        grid-area: icon;
+        place-self: center;
+    }
+
+    .header-text {
+        font-size: 14px;
+        grid-area: text;
+        margin: auto 0;
+    }
+
+    .header-dismiss {
+        color: $backgroud-color;
+        grid-area: dismiss;
+        height: 16px;
+        min-width: auto;
+        padding: 0;
+        width: 16px;
+
+        .mat-icon {
+            line-height: 0;
+            display: flex;
+            height: auto;
+            justify-content: center;
+            width: auto;
+        }
+    }
+}
+
+.info-body {
+    background-color: inherit;
+    padding: 15px 20px;
+
+    .mat-expansion-panel.info-details {
+        box-shadow: none;
+
+        .mat-expansion-panel-header {
+            color: $backgroud-color;
+            height: 44px;
+            padding: 0;
+
+            &:hover {
+                background-color: unset;
+            }
+
+            .mat-expansion-panel-header-title {
+                color: $backgroud-color;
+                flex: none;
+                font-size: 13px;
+                font-weight: 600;
+                margin-right: 10px;
+            }
+
+            .expansion-icon {
+                align-items: center;
+                display: flex;
+            }
+        }
+    }
+}

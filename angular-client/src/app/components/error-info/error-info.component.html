@@ -1,0 +1,24 @@
+<div class="header">
+    <mat-icon class="header-icon">priority_high</mat-icon>
+    <span class="header-text">Error</span>
+    <button mat-button class="header-dismiss" (click)="dismiss()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<div class="info-body">
+    <div class="main-message">
+        {{mainMessage}}
+    </div>
+
+    <mat-expansion-panel hideToggle class="info-details" *ngIf="details" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+
+        <mat-expansion-panel-header>
+            <mat-icon class="expansion-icon" *ngIf="panelOpenState">caret-up</mat-icon>
+            <mat-icon class="expansion-icon" *ngIf="!panelOpenState">caret-down</mat-icon>
+            <mat-panel-title>Details</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="error-description">{{details}}</div>
+    </mat-expansion-panel>
+</div>

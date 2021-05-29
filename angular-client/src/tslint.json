@@ -1,0 +1,32 @@
+{
+    "extends": [
+        "tslint-etc",
+        "tslint-jasmine-rules"
+    ],
+    "rules": {
+        "typedef": [
+            true,
+            "parameter",
+            "call-signature"
+        ],
+        "ban": [
+            true,
+            {
+                "name": "fdescribe",
+                "message": "don't focus tests"
+            },
+            {
+                "name": "fit",
+                "message": "don't focus tests"
+            }
+        ],
+        "member-ordering": [
+            false
+        ],
+        "no-unused-declaration": true,
+        "no-empty": true,
+        "no-async-without-await": true,
+        "no-focused-tests": true,
+        "quotemark": [true, "single", "avoid-escape"]
+    }
+}

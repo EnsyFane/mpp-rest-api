@@ -1,0 +1,53 @@
+<mat-drawer-container class="container" hasBackdrop="true">
+    <mat-drawer class="sidenav" mode="over" #drawer [position]="'end'">
+        <div class="container-top">
+            <h2 class="title">{{sidenavTitle}}</h2>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="container-bot">
+            <form #form="ngForm" [formGroup]="matchFormGroup" class="match-form">
+                <mat-form-field floatLabel="always">
+                    <mat-label>Home Team</mat-label>
+                    <input formControlName="homeTeam" type="text" matInput placeholder="Home Team" [autofocus]="true">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always">
+                    <mat-label>Guest Team</mat-label>
+                    <input formControlName="guestTeam" type="text" matInput placeholder="Guest Team" [autofocus]="true">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always">
+                    <mat-label>Match Type</mat-label>
+                    <input [matAutocomplete]="auto" formControlName="matchType" matInput placeholder="Match Type"
+                        [autofocus]="true">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredMatchTypes | async" [value]="option">{{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always">
+                    <mat-label>Available Seats</mat-label>
+                    <input formControlName="availableSeats" type="number" matInput placeholder="Available Seats"
+                        [autofocus]="true">
+                </mat-form-field>
+
+                <mat-form-field floatLabel="always">
+                    <mat-label>Ticket Price</mat-label>
+                    <input formControlName="ticketPrice" type="number" matInput placeholder="Ticket Price"
+                        [autofocus]="true">
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="buttons-container">
+            <button [autofocus]="false" class="primary-button" mat-stroked-button color="primary"
+                (click)="primaryAction()" [disabled]="!form.form.valid">{{sidenavPrimaryAction}}</button>
+            <button [autofocus]="false" class="secondary-button" mat-button color="primary"
+                (click)="secondaryAction()">{{sidenavSecondaryAction}}</button>
+        </div>
+    </mat-drawer>
+
+    <div class="sidenav-content">
+        <ng-content></ng-content>
+    </div>
+</mat-drawer-container>
