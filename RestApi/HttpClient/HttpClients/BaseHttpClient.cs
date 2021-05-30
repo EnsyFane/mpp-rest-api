@@ -42,7 +42,6 @@ namespace BasketballClient.HttpClients
 
         protected async Task<HttpResponseMessage> PostAsync<T>(string route, T body)
         {
-            var serializedBody = Serialize(body);
             var stringContent = JsonContent.Create(body, options: _serializerSettings);
 
             return await _client.PostAsync(_baseRestApiUrl + route, stringContent);
@@ -50,7 +49,6 @@ namespace BasketballClient.HttpClients
 
         protected async Task<HttpResponseMessage> PutAsync<T>(string route, T body)
         {
-            var serializedBody = Serialize(body);
             var stringContent = JsonContent.Create(body, options: _serializerSettings);
 
             return await _client.PutAsync(_baseRestApiUrl + route, stringContent);

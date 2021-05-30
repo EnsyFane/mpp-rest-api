@@ -1,6 +1,7 @@
 ﻿using RestApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RestApi.Persistence
 {
@@ -54,9 +55,9 @@ namespace RestApi.Persistence
             };
         }
 
-        public bool SaveChages()
+        public Task<bool> SaveChagesAsync()
         {
-            return true;
+            return Task.FromResult(true);
         }
 
         public void Update(Match entity)
