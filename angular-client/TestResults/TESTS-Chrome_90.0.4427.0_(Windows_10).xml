@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 90.0.4427.0 (Windows 10)" package="" timestamp="2021-05-30T13:58:37" id="0" hostname="Fane-Laptop" tests="14" errors="0" failures="0" time="0.561">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4427.0 Safari/537.36"/>
+  </properties>
+  <testcase name="MatchService should be created" time="0.03" classname="Chrome_90_0_4427_0_(Windows_10).MatchService"/>
+  <testcase name="EventService should be created" time="0.008" classname="Chrome_90_0_4427_0_(Windows_10).EventService"/>
+  <testcase name="ToolbarComponent should create" time="0.054" classname="Chrome_90_0_4427_0_(Windows_10).ToolbarComponent"/>
+  <testcase name="SnackbarService should be created" time="0.011" classname="Chrome_90_0_4427_0_(Windows_10).SnackbarService"/>
+  <testcase name="RestApiMatchesComponent should create" time="0.009" classname="Chrome_90_0_4427_0_(Windows_10).RestApiMatchesComponent"/>
+  <testcase name="MatchesTableComponent should create" time="0.061" classname="Chrome_90_0_4427_0_(Windows_10).MatchesTableComponent"/>
+  <testcase name="HeaderComponent should create" time="0.126" classname="Chrome_90_0_4427_0_(Windows_10).HeaderComponent"/>
+  <testcase name="ErrorInfoComponent Message with details should expand/minimize details panel" time="0.151" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent Message with details"/>
+  <testcase name="ErrorInfoComponent Message with details should have the correct main message and details" time="0.039" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent Message with details"/>
+  <testcase name="ErrorInfoComponent Simple message with no details should have the correct main message" time="0.018" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent Simple message with no details"/>
+  <testcase name="ErrorInfoComponent Simple message with no details should call dismiss on close" time="0.014" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent Simple message with no details"/>
+  <testcase name="ErrorInfoComponent should create" time="0.017" classname="Chrome_90_0_4427_0_(Windows_10).ErrorInfoComponent"/>
+  <testcase name="AppComponent should have as title 'angular-client'" time="0.014" classname="Chrome_90_0_4427_0_(Windows_10).AppComponent"/>
+  <testcase name="AppComponent should create the app" time="0.009" classname="Chrome_90_0_4427_0_(Windows_10).AppComponent"/>
+  <system-out>
+    <![CDATA[Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'mat-toolbar' is not a known element:
+1. If 'mat-toolbar' is an Angular component, then verify that it is part of this module.
+2. If 'mat-toolbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'mat-icon' is not a known element:
+1. If 'mat-icon' is an Angular component, then verify that it is part of this module.
+2. If 'mat-icon' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'app-sidenav-wrapper' is not a known element:
+1. If 'app-sidenav-wrapper' is an Angular component, then verify that it is part of this module.
+2. If 'app-sidenav-wrapper' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'app-header' is not a known element:
+1. If 'app-header' is an Angular component, then verify that it is part of this module.
+2. If 'app-header' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'router-outlet' is not a known element:
+1. If 'router-outlet' is an Angular component, then verify that it is part of this module.
+2. If 'router-outlet' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'matches-toolbar' is not a known element:
+1. If 'matches-toolbar' is an Angular component, then verify that it is part of this module.
+2. If 'matches-toolbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'matches-table' is not a known element:
+1. If 'matches-table' is an Angular component, then verify that it is part of this module.
+2. If 'matches-table' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'dataSource' since it isn't a known property of 'table'.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'matHeaderRowDef' since it isn't a known property of 'tr'.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'matRowDefColumns' since it isn't a known property of 'tr'.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'mat-toolbar' is not a known element:
+1. If 'mat-toolbar' is an Angular component, then verify that it is part of this module.
+2. If 'mat-toolbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'mat-slide-toggle' is not a known element:
+1. If 'mat-slide-toggle' is an Angular component, then verify that it is part of this module.
+2. If 'mat-slide-toggle' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'mat-icon' is not a known element:
+1. If 'mat-icon' is an Angular component, then verify that it is part of this module.
+2. If 'mat-icon' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'mat-slide-toggle'.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'app-rest-api-matches' is not a known element:
+1. If 'app-rest-api-matches' is an Angular component, then verify that it is part of this module.
+2. If 'app-rest-api-matches' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome 90.0.4427.0 (Windows 10) ERROR: 'NG0304: 'app-rest-api-matches' is not a known element:
+1. If 'app-rest-api-matches' is an Angular component, then verify that it is part of this module.
+2. If 'app-rest-api-matches' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
