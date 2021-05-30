@@ -34,4 +34,19 @@ jobs:
         run: |
           cd angular-client 
           npm run lint
+
+      - name: Build
+        run: |
+          cd angular-client 
+          npm run build
+
+      - name: Test
+        run: |
+          cd angular-client 
+          npm run test
+
+      - name: Build-prod
+        run: |
+          cd angular-client 
+          npm run build-prod
     
