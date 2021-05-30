@@ -15,6 +15,10 @@ body {
     padding: 0 !important;
 }
 
+.mat-expansion-panel-body {
+    background-color: $backgroud-color;
+}
+
 * {
     font-family: "Roboto", "sans-serif";
 }

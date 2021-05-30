@@ -1,11 +1,11 @@
 @use '~@angular/material' as mat;
-@import  '../../../theme.scss';
+@import "../../../theme.scss";
 
 :host {
     background-color: $backgroud-color;
     border-radius: 2px;
     color: black;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 13px;
 }
 
@@ -61,15 +61,12 @@
 
         .mat-expansion-panel-header {
             color: $backgroud-color;
+            background-color: $backgroud-color;
             height: 44px;
             padding: 0;
 
-            &:hover {
-                background-color: unset;
-            }
-
             .mat-expansion-panel-header-title {
-                color: $backgroud-color;
+                color: $foreground-color;
                 flex: none;
                 font-size: 13px;
                 font-weight: 600;

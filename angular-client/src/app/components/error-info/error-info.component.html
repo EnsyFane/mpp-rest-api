@@ -15,8 +15,8 @@
         (closed)="panelOpenState = false">
 
         <mat-expansion-panel-header>
-            <mat-icon class="expansion-icon" *ngIf="panelOpenState">caret-up</mat-icon>
-            <mat-icon class="expansion-icon" *ngIf="!panelOpenState">caret-down</mat-icon>
+            <mat-icon class="expansion-icon" *ngIf="panelOpenState">expand_less</mat-icon>
+            <mat-icon class="expansion-icon" *ngIf="!panelOpenState">expand_more</mat-icon>
             <mat-panel-title>Details</mat-panel-title>
         </mat-expansion-panel-header>
         <div class="error-description">{{details}}</div>

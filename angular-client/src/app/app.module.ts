@@ -9,7 +9,7 @@ import { MatchesTableComponent } from './components/matches-table/matches-table.
 import { MaterialModule } from './material-module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventService } from './services/event-service/event.service';
 import { MatchService } from './services/match-service/match.service';
 import { ErrorInfoComponent } from './components/error-info/error-info.component';
@@ -21,18 +21,19 @@ import { DeleteMatchDialogComponent } from './components/delete-match-dialog/del
 @NgModule({
 	declarations: [
 		AppComponent,
+		DeleteMatchDialogComponent,
+		ErrorInfoComponent,
 		HeaderComponent,
 		MatchesTableComponent,
-		ToolbarComponent,
-		ErrorInfoComponent,
 		RestApiMatchesComponent,
 		SidenavWrapperComponent,
-		DeleteMatchDialogComponent
+		ToolbarComponent
 	],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
 		BrowserAnimationsModule,
+		FormsModule,
 		HttpClientModule,
 		MaterialModule,
 		ReactiveFormsModule

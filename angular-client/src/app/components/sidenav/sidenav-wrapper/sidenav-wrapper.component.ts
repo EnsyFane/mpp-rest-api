@@ -79,12 +79,6 @@ export class SidenavWrapperComponent implements OnInit, OnDestroy {
 				startWith(''),
 				map(value => this.filterMatchTypeOptions(value))
 			);
-
-		// setTimeout(() => {
-		// 	const sidenavDetails = new SidenavDetails("Add match", "Add", "Cancel", EventName.AddMatch);
-		// 	let appEvent = new AppEvent(EventName.OpenSidenav, sidenavDetails);
-		// 	this.eventService.emit(appEvent);
-		// }, 50);
 	}
 
 	ngOnDestroy(): void {
