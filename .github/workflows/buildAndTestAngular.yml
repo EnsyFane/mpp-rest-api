@@ -1,0 +1,33 @@
+name: Angular Lint, Build and Test Angular Client
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+    - 'angular-client'
+    - '.github/workflows/BuildAndTestApi.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'angular-client'
+    - '.github/workflows/BuildAndTestApi.yml'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        
+      - name: Run npm install
+        run: npm install
+        
+      - name: Lint
+        run: npm run lint
+    
