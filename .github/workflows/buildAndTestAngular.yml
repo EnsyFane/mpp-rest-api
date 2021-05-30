@@ -43,7 +43,7 @@ jobs:
       - name: Test
         run: |
           cd angular-client 
-          npm run test
+          npm run test-headless
 
       - name: Build-prod
         run: |
