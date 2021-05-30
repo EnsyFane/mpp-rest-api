@@ -5,12 +5,12 @@ on:
     branches: [ main ]
     paths:
     - 'angular-client'
-    - '.github/workflows/BuildAndTestApi.yml'
+    - '.github/workflows/buildAndTestAngular.yml'
   pull_request:
     branches: [ main ]
     paths:
     - 'angular-client'
-    - '.github/workflows/BuildAndTestApi.yml'
+    - '.github/workflows/buildAndTestAngular.yml'
   schedule:
     - cron: '0 0 * * *'
 
