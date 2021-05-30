@@ -1,8 +1,9 @@
 ﻿using FluentAssertions;
 using RestApi.Integration.Tests.Infrastructure;
 using RestApi.Models;
-using System;
+using RestApi.Models.Dtos;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -18,6 +19,7 @@ namespace RestApi.Integration.Tests
         private readonly string getMatchesRoute;
         private readonly string updateMatchRoute;
         private readonly string deleteMatchRoute;
+        private readonly string filteredMatchesRoute;
 
         private readonly Match defaultMatch = new Match
         {
@@ -35,6 +37,7 @@ namespace RestApi.Integration.Tests
             getMatchesRoute = _client.BaseAddress + "basketball/matches";
             updateMatchRoute = _client.BaseAddress + "basketball/matches/{0}";
             deleteMatchRoute = _client.BaseAddress + "basketball/matches/{0}";
+            filteredMatchesRoute = _client.BaseAddress + "basketball/matches/filtered";
 
             _client = _factory.CreateClient();
             ClearDB().GetAwaiter().GetResult();
@@ -252,6 +255,54 @@ namespace RestApi.Integration.Tests
             var response = await _client.DeleteAsync(deleteMatchRoute.Replace("{0}", 1.ToString()));
 
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+
+        [Theory]
+        [MemberData(nameof(FilterData))]
+        public async Task TwoMatches_GetFilteredMatcehs_ReturnsCorrectMatch(FilterMatchDto filter)
+        {
+            var goodMatch = new Match
+            {
+                HomeTeam = "home-team",
+                GuestTeam = "guest-team",
+                MatchType = MatchType.Qualifying,
+                AvailableSeats = 12,
+                TicketPrice = 12.2f
+            };
+            var badMatch = new Match
+            {
+                HomeTeam = "bad-team",
+                GuestTeam = "bad-team",
+                MatchType = MatchType.Round1,
+                AvailableSeats = 99,
+                TicketPrice = 99.2f
+            };
+            await AddMatch(goodMatch);
+            await AddMatch(badMatch);
+
+            var response = await _client.PostAsync(filteredMatchesRoute, JsonContent.Create(filter));
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var foundMatches = await response.Content.ReadAsAsync<IEnumerable<Match>>();
+            foundMatches.Should().ContainSingle();
+            foundMatches.First().Should().Be(goodMatch);
+        }
+
+        public static IEnumerable<object[]> FilterData
+        {
+            get
+            {
+                return new[]
+                {
+                    new[] { new FilterMatchDto() { HomeTeam = "home-team" } },
+                    new[] { new FilterMatchDto() { HomeTeam = "home" } },
+                    new[] { new FilterMatchDto() { GuestTeam = "guest-team" } },
+                    new[] { new FilterMatchDto() { GuestTeam = "guest" } },
+                    new[] { new FilterMatchDto() { MatchType = MatchType.Qualifying } },
+                    new[] { new FilterMatchDto() { AvailableSeats = 12 } },
+                    new[] { new FilterMatchDto() { TicketPrice = 12.2f } }
+                };
+            }
         }
 
         private async Task<Match> AddMatch()
