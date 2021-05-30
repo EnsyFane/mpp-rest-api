@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RestApi.Persistence
 {
@@ -44,9 +45,9 @@ namespace RestApi.Persistence
             return _context.Matches.FirstOrDefault(m => m.Id == id);
         }
 
-        public bool SaveChages()
+        public async Task<bool> SaveChagesAsync()
         {
-            return (_context.SaveChanges() >= 0);
+            return (await _context.SaveChangesAsync() >= 0);
         }
 
         public void Update(Match entity)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RestApi.Persistence
 {
@@ -14,6 +15,6 @@ namespace RestApi.Persistence
 
         void Delete(T entity);
 
-        bool SaveChages();
+        Task<bool> SaveChagesAsync();
     }
 }

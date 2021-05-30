@@ -6,6 +6,7 @@ using RestApi.Models.Dtos;
 using RestApi.Persistence;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RestApi.Controllers
 {
@@ -58,17 +59,17 @@ namespace RestApi.Controllers
         }
 
         [HttpPost("matches")]
-        public ActionResult<Match> AddMatch(CreateMatchDto createMatchDto)
+        public async Task<ActionResult<Match>> AddMatchAsync(CreateMatchDto createMatchDto)
         {
             var match = _mapper.Map<CreateMatchDto, Match>(createMatchDto);
             _matchRepo.Add(match);
-            _matchRepo.SaveChages();
+            await _matchRepo.SaveChagesAsync();
 
             return CreatedAtRoute(nameof(GetMatchById), new { match.Id }, match);
         }
 
         [HttpPut("matches/{id}")]
-        public ActionResult UpdateMatch(int id, UpdateMatchDto updateMatchDto)
+        public async Task<ActionResult> UpdateMatchAsync(int id, UpdateMatchDto updateMatchDto)
         {
             var matchFromRepo = _matchRepo.GetById(id);
 
@@ -80,13 +81,13 @@ namespace RestApi.Controllers
             _mapper.Map(updateMatchDto, matchFromRepo);
 
             _matchRepo.Update(matchFromRepo);
-            _matchRepo.SaveChages();
+            await _matchRepo.SaveChagesAsync();
 
             return NoContent();
         }
 
         [HttpPatch("matches/{id}")]
-        public ActionResult PatchMatch(int id, JsonPatchDocument<UpdateMatchDto> patchDocument)
+        public async Task<ActionResult> PatchMatchAsync(int id, JsonPatchDocument<UpdateMatchDto> patchDocument)
         {
             var matchFromRepo = _matchRepo.GetById(id);
 
@@ -105,13 +106,13 @@ namespace RestApi.Controllers
             _mapper.Map(matchToPatch, matchFromRepo);
 
             _matchRepo.Update(matchFromRepo);
-            _matchRepo.SaveChages();
+            await _matchRepo.SaveChagesAsync();
 
             return NoContent();
         }
 
         [HttpDelete("matches/{id}")]
-        public ActionResult DeleteMatch(int id)
+        public async Task<ActionResult> DeleteMatchAsync(int id)
         {
             var matchFromRepo = _matchRepo.GetById(id);
 
@@ -121,7 +122,7 @@ namespace RestApi.Controllers
             }
 
             _matchRepo.Delete(matchFromRepo);
-            _matchRepo.SaveChages();
+            await _matchRepo.SaveChagesAsync();
 
             return NoContent();
         }
