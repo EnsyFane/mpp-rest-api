@@ -26,8 +26,12 @@ jobs:
         uses: actions/setup-node@v2.1.5
         
       - name: Run npm install
-        run: npm install
+        run: |
+          cd angular-client
+          npm install
         
       - name: Lint
-        run: npm run lint
+        run: |
+          cd angular-client 
+          npm run lint
     
