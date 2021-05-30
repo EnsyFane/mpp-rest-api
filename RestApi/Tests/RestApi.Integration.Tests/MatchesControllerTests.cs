@@ -295,7 +295,9 @@ namespace RestApi.Integration.Tests
                 return new[]
                 {
                     new[] { new FilterMatchDto() { HomeTeam = "home-team" } },
+                    new[] { new FilterMatchDto() { HomeTeam = "home" } },
                     new[] { new FilterMatchDto() { GuestTeam = "guest-team" } },
+                    new[] { new FilterMatchDto() { GuestTeam = "guest" } },
                     new[] { new FilterMatchDto() { MatchType = MatchType.Qualifying } },
                     new[] { new FilterMatchDto() { AvailableSeats = 12 } },
                     new[] { new FilterMatchDto() { TicketPrice = 12.2f } }
