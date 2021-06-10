@@ -4,15 +4,39 @@ import { Observable, of } from 'rxjs';
 import { SnackbarService } from '../snackbar-service/snackbar.service';
 import { catchError } from 'rxjs/operators'
 import { Match } from 'src/app/models/match-model';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class MatchService {
+	private hubConnection: HubConnection;
+
 	constructor(
 		private http: HttpClient,
 		private snackbarService: SnackbarService
 	) { }
+
+	subscribe(): Observable<any> {
+		this.hubConnection = new HubConnectionBuilder()
+			.withUrl("https://localhost:5001/basketball")
+			.build();
+
+		this.hubConnection.start()
+			.then(() => console.log('Connection started'))
+			.catch(err => console.error('Error starting connection: ' + err));
+
+		this.hubConnection.on('transferdata', (data) => {
+			console.log('d' + data);
+		});
+
+		return this.http.get(`basketball/matches/subscribe`)
+			.pipe(
+				catchError((error: any) => {
+					return this.handleHttpError(`The request to get match by id failed with error code ${error.status}.`, null);
+				})
+			);
+	}
 
 	getMatchById(id: number): Observable<any> {
 		return this.http.get(`basketball/matches/${id}`)

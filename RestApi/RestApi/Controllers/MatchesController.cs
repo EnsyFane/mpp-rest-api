@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using RestApi.HubConfig;
 using RestApi.Infrastructure.Mapper;
 using RestApi.Models;
 using RestApi.Models.Dtos;
 using RestApi.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,13 +17,24 @@ namespace RestApi.Controllers
     [ApiController]
     public class MatchesController : ControllerBase
     {
+        private readonly IHubContext<AppHub> _hub;
         private readonly IMatchRepository _matchRepo;
         private readonly IMappingCoordinator _mapper;
 
-        public MatchesController(IMatchRepository matchRepo, IMappingCoordinator mapper)
+        public MatchesController(IHubContext<AppHub> hub, IMatchRepository matchRepo, IMappingCoordinator mapper)
         {
+            _hub = hub;
             _matchRepo = matchRepo;
             _mapper = mapper;
+        }
+
+        [HttpGet("matches/subscribe")]
+        public IActionResult Subscribe()
+        {
+            var random = new Random();
+            var timerManager = new TimerManager(() => _hub.Clients.All.SendAsync("transferdata", random.Next(1, 10)));
+
+            return Ok();
         }
 
         [HttpGet("matches/{id}", Name = "GetMatchById")]

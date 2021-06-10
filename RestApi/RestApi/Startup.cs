@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using RestApi.HubConfig;
 using RestApi.Infrastructure.Mapper;
 using RestApi.Persistence;
 
@@ -24,10 +25,18 @@ namespace RestApi
         {
             services.AddCors(c =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                c.AddPolicy("AllowOrigin", options =>
+                {
+                    options.WithOrigins("http://localhost:4200")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials();
+                });
             });
 
             ConfigureDbContext(services);
+
+            services.AddSignalR();
 
             services.AddControllers()
                 .AddNewtonsoftJson(opts =>
@@ -71,14 +80,12 @@ namespace RestApi
 
             app.UseAuthorization();
 
-            app.UseCors(opts =>
-            {
-                opts.AllowAnyOrigin();
-            });
+            app.UseCors("AllowOrigin");
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<AppHub>("basketball");
             });
         }
     }
