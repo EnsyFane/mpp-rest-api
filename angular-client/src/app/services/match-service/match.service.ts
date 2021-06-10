@@ -74,7 +74,7 @@ export class MatchService {
 	}
 
 	private handleHttpError(error: string, toReturn: any): Observable<any> {
-		this.snackbarService.displayErrorSnackbar(error, 'aaa');
+		this.snackbarService.displayErrorSnackbar(error);
 		return of(toReturn);
 	}
 }

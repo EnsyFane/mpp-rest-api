@@ -22,6 +22,11 @@ namespace RestApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
             ConfigureDbContext(services);
 
             services.AddControllers()
@@ -65,6 +70,11 @@ namespace RestApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(opts =>
+            {
+                opts.AllowAnyOrigin();
+            });
 
             app.UseEndpoints(endpoints =>
             {
